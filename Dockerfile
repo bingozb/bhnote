@@ -1,6 +1,12 @@
-FROM registry-vpc.cn-shenzhen.aliyuncs.com/macrowolf/nginx
+FROM registry.cn-shenzhen.aliyuncs.com/bingozb/vuepress AS vp-builder
 
-ENV VIRTUAL_HOST blog.bingov5.com,www.bingov5.com,bingov5.com
-ENV LETSENCRYPT_HOST blog.bingov5.com,www.bingov5.com,bingov5.com
+COPY . /tmp/bhnote
 
-COPY . /usr/share/nginx/html
+RUN cd /tmp/bhnote && npm install && npm run build
+
+FROM registry.cn-shenzhen.aliyuncs.com/bingozb/nginx
+
+ENV VIRTUAL_HOST www.bhnote.com,bhnote.com
+ENV LETSENCRYPT_HOST www.bhnote.com,bhnote.com
+
+COPY --from=vp-builder /tmp/bhnote/dist /usr/share/nginx/html
