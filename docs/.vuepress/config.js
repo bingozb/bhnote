@@ -91,6 +91,8 @@ module.exports = {
         "authorAvatar": "/avatar.jpg",
         "record": "粤ICP备2020118046号",
         "recordLink": "http://beian.miit.gov.cn",
+        "cyberSecurityRecord": "粤公网安备 44030602005238号",
+        "cyberSecurityLink": "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030602005238",
         "startYear": "2016",
         "valineConfig": {
             "appId": 'MVB253wQxSr8tjJKCFV2CkEc-gzGzoHsz',
